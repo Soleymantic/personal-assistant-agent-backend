@@ -28,6 +28,11 @@ A Spring Boot 3.3 starter project for a personal assistant/AI admin backend. The
 ## Configuration
 Default datasource settings live in `src/main/resources/application.properties` and match the Docker Compose service. You can override them via environment variables when running the app (for example `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, and `SPRING_DATASOURCE_PASSWORD`).
 
+### Security
+- Requests must include an `X-API-KEY` header that matches `security.api-key` (configure via `SECURITY_API_KEY` environment variable or in `application.properties`).
+- CORS is restricted to the Personal Assistant Agent frontend (`https://soleymantic.github.io/personal-assistant-agent`), its GitHub Pages root, and common local dev origins. Customize the origins with the `security.allowed-origins` property if needed.
+- Security headers and stateless sessions are enforced through Spring Security to harden the REST API surface.
+
 ## Development tips
 - Use `mvn test` to run the Maven test suite.
 - Lombok is included; ensure your IDE supports it for the best developer experience.
