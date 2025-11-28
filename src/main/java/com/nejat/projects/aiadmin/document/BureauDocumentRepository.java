@@ -1,0 +1,8 @@
+package com.nejat.projects.aiadmin.document;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface BureauDocumentRepository extends JpaRepository<BureauDocument, UUID> {
+}
