@@ -2,8 +2,10 @@ package com.nejat.projects.aiadmin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 @SpringBootApplication
+@ConfigurationPropertiesScan("com.nejat.projects")
 public class AiadminApplication {
 
     public static void main(String[] args) {
