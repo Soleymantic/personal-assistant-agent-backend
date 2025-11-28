@@ -49,6 +49,17 @@ You do **not** need a separate Dockerfile for PostgreSQL: the included `docker-c
 ## Configuration
 Default datasource settings live in `src/main/resources/application.properties` and match the Docker Compose service. You can override them via environment variables when running the app (for example `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, and `SPRING_DATASOURCE_PASSWORD`).
 
+### OpenAI
+Configure OpenAI access for the LLM client with the following `application.yml` snippet (environment variables recommended for secrets):
+
+```yaml
+aiadmin:
+  openai:
+    apiKey: ${OPENAI_API_KEY:}
+    model: gpt-4.1-mini
+    baseUrl: https://api.openai.com/v1
+```
+
 ### Security
 - Requests must include an `X-API-KEY` header that matches `security.api-key` (configure via `SECURITY_API_KEY` environment variable or in `application.properties`).
 - CORS is restricted to the Personal Assistant Agent frontend (`https://soleymantic.github.io/personal-assistant-agent`), its GitHub Pages root, and common local dev origins. Customize the origins with the `security.allowed-origins` property if needed.
