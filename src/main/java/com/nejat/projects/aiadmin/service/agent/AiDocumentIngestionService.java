@@ -5,8 +5,9 @@ import com.nejat.projects.aiadmin.model.DocumentStatus;
 import com.nejat.projects.aiadmin.model.Tag;
 import com.nejat.projects.aiadmin.repository.BureauDocumentRepository;
 import com.nejat.projects.aiadmin.repository.TagRepository;
-import com.nejat.projects.aiadmin.service.llm.EmailClassifier;
 import com.nejat.projects.aiadmin.service.llm.EmailExtractor;
+import com.nejat.projects.service.llm.EmailCategory;
+import com.nejat.projects.service.llm.EmailClassifier;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +31,7 @@ public class AiDocumentIngestionService {
 
     @Transactional
     public BureauDocument ingestFromEmail(String emailText) {
-        String category = emailClassifier.classify(emailText);
+        EmailCategory category = emailClassifier.classify(emailText);
         Map<String, Object> extracted = emailExtractor.extract(emailText);
 
         Instant now = Instant.now();
@@ -40,7 +41,7 @@ public class AiDocumentIngestionService {
         document.setSender(asString(extracted.get("sender")));
         document.setAmount(asString(extracted.get("amount")));
         document.setDue(parseDueDate(extracted.get("due_date")));
-        document.setCategory(category);
+        document.setCategory(category.name());
         document.setSummary(asString(extracted.get("summary")));
         document.setStatus(DocumentStatus.PENDING);
         document.setCreatedAt(now);
