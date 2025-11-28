@@ -1,4 +1,4 @@
-package com.example.aiadmin.document;
+package com.nejat.projects.aiadmin.document;
 
 public enum DocumentStatus {
     PENDING,

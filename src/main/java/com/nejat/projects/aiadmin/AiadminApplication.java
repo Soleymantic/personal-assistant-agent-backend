@@ -1,4 +1,4 @@
-package com.example.aiadmin;
+package com.nejat.projects.aiadmin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
