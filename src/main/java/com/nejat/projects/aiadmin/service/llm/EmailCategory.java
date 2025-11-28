@@ -1,4 +1,4 @@
-package com.nejat.projects.service.llm;
+package com.nejat.projects.aiadmin.service.llm;
 
 public enum EmailCategory {
     INVOICE,

@@ -1,4 +1,4 @@
-package com.nejat.projects.service.llm;
+package com.nejat.projects.aiadmin.service.llm;
 
 import com.nejat.projects.aiadmin.service.llm.OpenAiClient;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.nejat.projects.service.llm;
+package com.nejat.projects.aiadmin.service.llm;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
