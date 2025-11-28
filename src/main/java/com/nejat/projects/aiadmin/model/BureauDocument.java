@@ -1,4 +1,4 @@
-package com.nejat.projects.aiadmin.document;
+package com.nejat.projects.aiadmin.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
