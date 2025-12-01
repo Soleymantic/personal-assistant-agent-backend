@@ -12,7 +12,7 @@ A Spring Boot 3.3 starter project for a personal assistant/AI admin backend. The
    ```bash
    docker-compose up -d
    ```
-   The local database uses the `aiadmin` database, user, and password exposed on port `5432`.
+   The local database uses the `aiadmin` database, user, and password exposed on host port `5433`.
 2. Launch the application:
    ```bash
    mvn spring-boot:run
@@ -29,7 +29,7 @@ Run the container (point it at your database and provide the API key):
 
 ```bash
 docker run --rm -p 8080:8080 \
-  -e SPRING_DATASOURCE_URL="jdbc:postgresql://host.docker.internal:5432/aiadmin" \
+  -e SPRING_DATASOURCE_URL="jdbc:postgresql://host.docker.internal:5433/aiadmin" \
   -e SPRING_DATASOURCE_USERNAME=aiadmin \
   -e SPRING_DATASOURCE_PASSWORD=aiadmin \
   -e SECURITY_API_KEY=change-me \
@@ -37,7 +37,7 @@ docker run --rm -p 8080:8080 \
 ```
 
 ### PostgreSQL container image
-You do **not** need a separate Dockerfile for PostgreSQL: the included `docker-compose.yml` already uses the official `postgres:16` image with the `aiadmin` database, user, and password exposed on port `5432`. Use that image as-is unless you need custom extensions or initialization, in which case you can swap the image in `docker-compose.yml` for your own.
+You do **not** need a separate Dockerfile for PostgreSQL: the included `docker-compose.yml` already uses the official `postgres:16` image with the `aiadmin` database, user, and password exposed on host port `5433`. Use that image as-is unless you need custom extensions or initialization, in which case you can swap the image in `docker-compose.yml` for your own.
 
 ## Project structure
 - `src/main/java/com/nejat/projects/aiadmin/controller` – REST controllers for HTTP endpoints.
