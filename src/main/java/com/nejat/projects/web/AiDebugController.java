@@ -35,21 +35,18 @@ public class AiDebugController {
 
     @PostMapping("/classify")
     public Map<String, String> classify(@RequestBody EmailTextRequest request) {
-        EmailCategory category = emailClassifier.classify(request.emailText());
+        EmailCategory category = emailClassifier.classify(request.getEmailText());
         return Map.of("category", category.name());
     }
 
     @PostMapping("/extract")
     public Map<String, Object> extract(@RequestBody EmailTextRequest request) {
-        return emailExtractor.extract(request.emailText());
+        return emailExtractor.extract(request.getEmailText());
     }
 
     @PostMapping("/ingest")
     public DocumentDetailDto ingest(@RequestBody EmailTextRequest request) {
-        BureauDocument document = aiDocumentIngestionService.ingestFromEmail(request.emailText());
+        BureauDocument document = aiDocumentIngestionService.ingestFromEmail(request.getEmailText());
         return documentMapper.toDetailDto(document);
-    }
-
-    public record EmailTextRequest(String emailText) {
     }
 }
