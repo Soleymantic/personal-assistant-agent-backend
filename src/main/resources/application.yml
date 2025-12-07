@@ -30,6 +30,8 @@ spring:
             user-name-attribute: email
 
 security:
+  allowed-origins: https://soleymantic.github.io/personal-assistant-agent,https://soleymantic.github.io,http://localhost:5173,http://localhost:3000
+  api-key: ${SECURITY_API_KEY:change-me}
   jwt:
     secret: ${JWT_SECRET:change-me-change-me-change-me-32}
     expiration: ${JWT_EXPIRATION:900000}

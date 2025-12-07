@@ -36,7 +36,7 @@ public class UserService implements UserDetailsService {
     public User getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !(authentication.getPrincipal() instanceof UserDetails userDetails)) {
-            throw new ApiException("Unauthenticated");
+            throw new ApiException(org.springframework.http.HttpStatus.UNAUTHORIZED, "Unauthenticated");
         }
         return findByEmail(userDetails.getUsername());
     }
