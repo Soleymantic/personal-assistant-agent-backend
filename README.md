@@ -8,11 +8,19 @@ A Spring Boot 3.3 backend for the Personal Assistant Agent. The project now bund
 - Docker (optional, for the local PostgreSQL service)
 
 ## Quick start
-1. Start the database (optional if you already have PostgreSQL available):
+1. Start the database (and pgAdmin UI) (optional if you already have PostgreSQL available):
    ```bash
    docker-compose up -d
    ```
+   If you only want PostgreSQL without pgAdmin:
+   ```bash
+   docker-compose up -d postgres
+   ```
    The local database uses the `aiadmin` database, user, and password exposed on host port `5433`.
+   You can override Docker Compose defaults via a local `.env` file (see `.env.example`).
+
+   pgAdmin (PostgreSQL UI) is available at `http://localhost:5050`:
+   - When registering a server in pgAdmin, use host `postgres`, port `5432`, and the same database/user/password as in `docker-compose.yml`.
 2. Launch the application:
    ```bash
    mvn spring-boot:run
@@ -53,7 +61,7 @@ You do **not** need a separate Dockerfile for PostgreSQL: the included `docker-c
 - `src/main/resources` – application configuration (e.g., `application.yml`).
 
 ## Configuration
-Default datasource settings live in `src/main/resources/application.yml` and match the Docker Compose service. You can override them via environment variables when running the app (for example `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`).
+Default datasource settings live in `src/main/resources/application.properties` and match the Docker Compose service. You can override them via environment variables when running the app (for example `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`).
 
 ### OpenAI
 Configure OpenAI access for the LLM client with the following `application.yml` snippet (environment variables recommended for secrets):

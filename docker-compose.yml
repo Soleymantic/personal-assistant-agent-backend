@@ -4,12 +4,28 @@ services:
     image: postgres:16
     restart: unless-stopped
     environment:
-      POSTGRES_DB: aiadmin
-      POSTGRES_USER: aiadmin
-      POSTGRES_PASSWORD: aiadmin
+      POSTGRES_DB: ${POSTGRES_DB:-aiadmin}
+      POSTGRES_USER: ${POSTGRES_USER:-aiadmin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-aiadmin}
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    build:
+      context: .
+      dockerfile: pgadmin/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-aiadmin@mail.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-aiadmin}
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
 volumes:
   postgres_data:
+  pgadmin_data:
