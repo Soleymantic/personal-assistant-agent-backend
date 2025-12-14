@@ -51,14 +51,16 @@ docker run --rm -p 8080:8080 \
 You do **not** need a separate Dockerfile for PostgreSQL: the included `docker-compose.yml` already uses the official `postgres:16` image with the `aiadmin` database, user, and password exposed on host port `5433`. Use that image as-is unless you need custom extensions or initialization, in which case you can swap the image in `docker-compose.yml` for your own.
 
 ## Project structure
-- `src/main/java/com/nejat/projects/aiadmin/controller` – REST controllers for AI admin HTTP endpoints.
-- `src/main/java/com/nejat/projects/aiadmin/service` – business logic services invoked by controllers.
-- `src/main/java/com/nejat/projects/aiadmin/repository` – Spring Data JPA repositories for persistence access.
-- `src/main/java/com/nejat/projects/aiadmin/model` – JPA entities and supporting domain types.
-- `src/main/java/com/nejat/projects/auth` – authentication controllers and services.
-- `src/main/java/com/nejat/projects/security` – JWT filter/provider and Google OAuth2 integration.
-- `src/main/java/com/nejat/projects/user` – user domain, repository, and user-facing endpoints.
-- `src/main/resources` – application configuration (e.g., `application.yml`).
+- `src/main/java/com/nejat/projects/aiadmin/controller` – all REST controllers (AI admin, auth, user, debug).
+- `src/main/java/com/nejat/projects/aiadmin/service` – business logic services (incl. query/agent/LLM helpers).
+- `src/main/java/com/nejat/projects/aiadmin/repository` – Spring Data JPA repositories.
+- `src/main/java/com/nejat/projects/aiadmin/model` – JPA entities and enums.
+- `src/main/java/com/nejat/projects/aiadmin/dto` – request/response DTOs.
+- `src/main/java/com/nejat/projects/aiadmin/mapper` – mapping helpers (entity ↔ DTO).
+- `src/main/java/com/nejat/projects/aiadmin/security` – JWT + OAuth2 integration.
+- `src/main/java/com/nejat/projects/aiadmin/config` – Spring configuration beans.
+- `src/main/java/com/nejat/projects/aiadmin/exception` – shared exception types + handler.
+- `src/main/resources` – application configuration (e.g., `application.properties`).
 
 ## Configuration
 Default datasource settings live in `src/main/resources/application.properties` and match the Docker Compose service. You can override them via environment variables when running the app (for example `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`).

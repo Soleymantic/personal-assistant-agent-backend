@@ -1,8 +1,8 @@
 package com.nejat.projects.aiadmin.controller;
 
 import com.nejat.projects.aiadmin.service.agent.AiDocumentIngestionService;
-import com.nejat.projects.aiadmin.web.DocumentMapper;
-import com.nejat.projects.aiadmin.web.dto.DocumentDetailDto;
+import com.nejat.projects.aiadmin.dto.DocumentDetailDto;
+import com.nejat.projects.aiadmin.mapper.DocumentMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
