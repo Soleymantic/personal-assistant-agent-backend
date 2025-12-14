@@ -2,7 +2,6 @@ package com.nejat.projects.aiadmin.service.llm;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nejat.projects.aiadmin.service.llm.OpenAiClient;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;

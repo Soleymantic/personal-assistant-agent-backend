@@ -1,15 +1,10 @@
 package com.nejat.projects.aiadmin.service.llm;
 
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Service
-@Profile("dev")
 public class FakeEmailExtractor implements EmailExtractor {
 
     @Override

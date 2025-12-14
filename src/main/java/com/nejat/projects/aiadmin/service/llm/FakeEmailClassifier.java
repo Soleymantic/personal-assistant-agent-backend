@@ -1,10 +1,5 @@
 package com.nejat.projects.aiadmin.service.llm;
 
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
-
-@Service
-@Profile("dev")
 public class FakeEmailClassifier implements EmailClassifier {
 
     @Override
